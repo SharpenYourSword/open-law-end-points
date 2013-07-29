@@ -3,12 +3,14 @@ require 'json'
 require 'rspec'
 require_relative '../sync_yaml_json.rb'
 
+Syncronizr.new
+
 def find_yamls(folder)
-  yamls = Dir.glob( File.join(File.dirname(__FILE__), folder, "*.yaml")).reduce([]){ |a,f| a << f }
+  yamls = Dir.glob( File.join(File.dirname(__FILE__), '..', folder, "*.yaml")).reduce([]){ |a,f| a << f }
 end
 
 def find_jasons(folder)
-  jasons = Dir.glob( File.join(File.dirname(__FILE__), folder, "*.json")).reduce([]){ |a,f| a << f }
+  jasons = Dir.glob( File.join(File.dirname(__FILE__), '..', folder, "*.json")).reduce([]){ |a,f| a << f }
 end
 
 RSpec.configure do |config|
@@ -22,12 +24,13 @@ describe 'repo files are the same' do
       jasons = find_jasons(type)
       subject { yamls.count }
       it { expect eql(jasons.count) }
-      # let's compare using Yamls as the baseline so we don't have to worry about the .to_sym
       yamls.each do |yaml_file|
-        let(:json_file) { File.basename(yaml_file, ".yaml") + '.json' }
-        data = YAML.load(IO.read(yaml_file))
-        subject { JSON.dump(data) }
-        it { expect eql(JSON.load(IO.read(json_file))) }
+        describe "comparing #{yaml_file} to is json equivalent." do
+          let(:json_file) { File.basename(yaml_file, ".yaml") + '.json' }
+          data = YAML.load(IO.read(yaml_file))
+          subject { JSON.dump(data) }
+          it { expect eql(JSON.load(IO.read(File.join(File.dirname(__FILE__), '..', type, json_file)))) }
+        end
       end
     end
   end
