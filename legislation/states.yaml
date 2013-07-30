@@ -13,4 +13,16 @@ somalia:
     - user/repo
     - ruby
     - - xml
-united kingdom: 
+united kingdom:
+united states:
+  unprocessed:
+    http://uscodebeta.house.gov/download/download.shtml:
+      notes:
+        - zip files
+      schema:
+        - http://uscodebeta.house.gov/download/resources/schemaandcss.zip
+      formats:
+      - xml
+      - xhtml
+      - pcc
+      - pdf
