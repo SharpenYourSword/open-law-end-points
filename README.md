@@ -1,5 +1,7 @@
 ## Introduction
 
+[![Build Status](https://travis-ci.org/compleatang/open-law-end-points.png)](https://travis-ci.org/compleatang/open-law-end-points)
+
 This is a simple repository which i intend to keep a running journal of all the openData API's and Scrapers which relate to legal research. The intention is that it be a machine readable system which the community may add to as necessary. Each data set will be available in both YAML and JSON formats which together should be parse-able and integrate-able by most any modern programming or scripting language.
 
 This is not meant as a comprehensive API documentation system, but rather as a starting point to let machines find the API end point.
