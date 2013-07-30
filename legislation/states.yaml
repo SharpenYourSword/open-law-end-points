@@ -10,9 +10,11 @@ somalia:
     - txt
   scrapers:
     github:
-    - user/repo
-    - ruby
-    - - xml
+      user/repo:
+        lang:
+          -ruby
+        formats:
+          - xml
 united kingdom:
 united states:
   unprocessed:
@@ -22,7 +24,7 @@ united states:
       schema:
         - http://uscodebeta.house.gov/download/resources/schemaandcss.zip
       formats:
-      - xml
-      - xhtml
-      - pcc
-      - pdf
+        - xml
+        - xhtml
+        - pcc
+        - pdf

@@ -37,88 +37,165 @@ The `yaml` files mostly use hashes whereas (obviously) the `json` files use stri
 (international_organizations)
 
 ```yaml
-'united nations':
-    :api:
-        'http://....': ['xml','rdf']
-    :unprocessed:
-        'http://....': ['html','txt']
-    :scrapers:
-        :github: 'user/repo':
-            'python': ['json']
-        :github: 'user/repo':
-            'ruby': ['xml']
-'world trade organization':
+united nations:
+  api:
+    http://....:
+      - xml
+      - rdf
+  unprocessed:
+    http://...:
+      schema:
+        - http://...
+      formats:
+        - xml
+        - xhtml
+        - pcc
+        - pdf
+      notes:
+        - zip files
+  scrapers:
+    github:
+      user/repo:
+      python:
+        - json
+    github:
+      user/repo:
+        lang:
+          -ruby
+        formats:
+          - xml
+world trade organization:
     ...
 ```
 
 (states)
 
 ```yaml
-'somalia':
-    'api':
-        'http://....': ['xml','rdf']
-    'unprocessed':
-        'http://....': ['html','txt']
-    'scrapers':
-        'github': 'user/repo':
-            'python': ['json']
-        'github': 'user/repo':
-            'ruby': ['xml']
-'united kingdom':
+somalia:
+  api:
+    http://....:
+    - xml
+    - rdf
+  unprocessed:
+    http://....:
+    - html
+    - txt
+  scrapers:
+    github:
+    - user/repo
+    - ruby
+    - - xml
+united states:
+  unprocessed:
+    http://uscodebeta.house.gov/download/download.shtml:
+      notes:
+        - zip files
+      schema:
+        - http://uscodebeta.house.gov/download/resources/schemaandcss.zip
+      formats:
+        - xml
+        - xhtml
+        - pcc
+        - pdf
     ...
 ```
 
 (defacto_states)
 
 ```yaml
-'somaliland':
-    'api':
-        'http://....': ['xml','rdf']
-    'unprocessed':
-        'http://....': ['html','txt']
-    'scrapers':
-        'github': 'user/repo':
-            'python': ['json']
-        'github': 'user/repo':
-            'ruby': ['xml']
-'western sahara':
+somaliland:
+  api:
+    http://....:
+    - xml
+    - rdf
+  unprocessed:
+    http://....:
+    - html
+    - txt
+  scrapers:
+    github:
+    - user/repo
+    - ruby
+    - - xml
+western sahara:
+  unprocessed:
+    http://...:
+      notes:
+        - zip files
+      schema:
+        - http://...
+      formats:
+        - xml
+        - xhtml
+        - pcc
+        - pdf
     ...
 ```
 
 (sub_states)
 
 ```yaml
-'united states'
-  'tennessee':
-      'api':
-          'http://....': ['xml','rdf']
-      'unprocessed':
-          'http://....': ['html','txt']
-      'scrapers':
-          'github': 'user/repo':
-              'python': ['json']
-          'github': 'user/repo':
-              'ruby': ['xml']
-  'utah':
+united states:
+  tennessee:
+    api:
+      http://....:
+      - xml
+      - rdf
+    unprocessed:
+      http://....:
+      - html
+      - txt
+    scrapers:
+      github:
+      - user/repo
+      - ruby
+      - - xml
+  utah:
+    unprocessed:
+      http://...:
+        notes:
+          - zip files
+        schema:
+          - http://...
+        formats:
+          - xml
+          - xhtml
+          - pcc
+          - pdf
       ...
 ```
 
 (municipalities)
 
 ```yaml
-'united states'
-  'tennessee':
-      'memphis':
-        'api':
-            'http://....': ['xml','rdf']
-        'unprocessed':
-            'http://....': ['html','txt']
-        'scrapers':
-            'github': 'user/repo':
-                'python': ['json']
-            'github': 'user/repo':
-                'ruby': ['xml']
-      'nashville':
+united states:
+  tennessee:
+    memphis:
+      api:
+        http://....:
+        - xml
+        - rdf
+      unprocessed:
+        http://....:
+        - html
+        - txt
+      scrapers:
+        github:
+        - user/repo
+        - ruby
+        - - xml
+    nashville:
+      unprocessed:
+        http://...:
+          notes:
+            - zip files
+          schema:
+            - http://...
+          formats:
+            - xml
+            - xhtml
+            - pcc
+            - pdf
       ...
 ```
 
