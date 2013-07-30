@@ -18,7 +18,7 @@ class Syncronizr
     #in case others are pedantic like me
     unless @origin then @origin = `git log --pretty=format:'%h -%d' | grep 'github/master'`.split(' ').first end
     unless @origin then @origin = `git log --pretty=format:'%h -%d' | grep 'original/master'`.split(' ').first end
-    if @origin then find_commits_after_origin_master(@origin) end
+    if @origin then find_commits_after_origin_master end
   end
 
   def find_commits_after_origin_master
