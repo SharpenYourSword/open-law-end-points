@@ -50,7 +50,7 @@ class Syncronizr
         data = YAML.load(IO.read(yaml_file))
         organize_the_data_set(data)
         json_file = File.join(File.dirname(yaml_file), File.basename(yaml_file, ".yaml") + ".json")
-        IO.write(json_file, JSON.dump(data))
+        IO.write(json_file, JSON.pretty_generate(data))
       end
     end
   end
@@ -69,5 +69,25 @@ class Syncronizr
   def organize_the_data_set(data)
     ordered_data = data.keys.map{|k| k}.sort
     ordered_data.reduce({}){ | hash, key | hash[key] = begin; data[key]; rescue; ''; end; hash }
+  end
+
+  #these next two methods are maintenance methods in case something weird happens with the repo.
+  #obviously, use carefully!
+  def regenerate_all_json
+    courts = Dir.glob( File.join(File.dirname(__FILE__), 'courts', "*.yaml"))
+    legislation = Dir.glob( File.join(File.dirname(__FILE__), 'legislation', "*.yaml"))
+    regulation = Dir.glob( File.join(File.dirname(__FILE__), 'regulation', "*.yaml"))
+    make_dirty_yamls_into_clean_jasons(courts)
+    make_dirty_yamls_into_clean_jasons(legislation)
+    make_dirty_yamls_into_clean_jasons(regulation)
+  end
+
+  def regenerate_all_yaml
+    courts = Dir.glob( File.join(File.dirname(__FILE__), 'courts', "*.json"))
+    legislation = Dir.glob( File.join(File.dirname(__FILE__), 'legislation', "*.json"))
+    regulation = Dir.glob( File.join(File.dirname(__FILE__), 'regulation', "*.json"))
+    make_dirty_jasons_into_clean_yamls(courts)
+    make_dirty_jasons_into_clean_yamls(legislation)
+    make_dirty_jasons_into_clean_yamls(regulation)
   end
 end
