@@ -11,5 +11,6 @@ leg|treaties:
 
 regs:
 
+- CFPB Regs Parser: http://eregs.github.io/eregulations/
 
 schema:
