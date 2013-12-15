@@ -2,6 +2,7 @@ cases:
 
 - https://www.courtlistener.com
 - http://www.freelawreporter.org
+- https://github.com/stvnrlly/cafc-scraper
 
 leg|treaties:
 
